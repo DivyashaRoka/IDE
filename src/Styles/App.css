@@ -1,0 +1,368 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto+Mono');
+
+#python-editor-container {
+    background-color: rgb(49, 43, 43);
+    height: 100%;
+    width: 100%;
+    font-family: 'Roboto Mono', monospace;
+    overflow: hidden;
+    /* margin-top: 0.8VW; */
+}
+
+#python-editor-input {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    overflow: auto;
+}
+
+#python-code-editor {
+    background-color: #f9f9f9;
+    overflow: auto;
+}
+
+#run-input-btn {
+    align-self: flex-end;
+    margin: 5px;
+    background-color: rgb(59, 144, 137);
+    border-radius: 3px;
+    /* border: 1px solid aqua; */
+    border-left:aqua;
+    border-top:aqua;
+    cursor: pointer;
+    color: #ffffff;
+    font-family: Arial;
+    font-size: 13px;
+    padding: 6px 24px;
+    text-decoration: none;
+    text-shadow: 0px 1px 0px #2f6627;
+    position: absolute;
+    right:14em;
+}
+
+#run-input-btn:hover {
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0.05, #5cbf2a), color-stop(1, #44c767));
+    background: -moz-linear-gradient(top, #5cbf2a 5%, #44c767 100%);
+    background: -webkit-linear-gradient(top, #5cbf2a 5%, #44c767 100%);
+    background: -o-linear-gradient(top, #5cbf2a 5%, #44c767 100%);
+    background: -ms-linear-gradient(top, #5cbf2a 5%, #44c767 100%);
+    background: linear-gradient(to bottom, #5cbf2a 5%, #44c767 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#5cbf2a', endColorstr='#44c767', GradientType=0);
+    background-color: #5cbf2a;
+}
+
+#python-editor-output {
+    width: 100%;
+    height: 30vh;
+    display: flex;
+    flex-direction: column;
+}
+
+#python-editor-output button {
+    width: 8rem;
+    align-self: flex-end;
+    margin: 5px;
+    border: 0;
+    border-radius: 5PX;
+    background-color: rgb(59, 144, 137);
+    display: inline-block;
+    cursor: pointer;
+    color: #ffffff;
+    font-family: Arial;
+    font-size: 13px;
+    padding: 6px 24px;
+    text-decoration: none;
+    text-shadow: 0px 1px 0px #854629;
+}
+
+#python-editor-output button:hover {
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0.05, #bc3315), color-stop(1, #d0451b));
+    background: -moz-linear-gradient(top, #bc3315 5%, #d0451b 100%);
+    background: -webkit-linear-gradient(top, #bc3315 5%, #d0451b 100%);
+    background: -o-linear-gradient(top, #bc3315 5%, #d0451b 100%);
+    background: -ms-linear-gradient(top, #bc3315 5%, #d0451b 100%);
+    background: linear-gradient(to bottom, #bc3315 5%, #d0451b 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#bc3315', endColorstr='#d0451b', GradientType=0);
+    background-color: #bc3315;
+}
+
+#python-editor-output textarea {
+    width: 100%;
+    height: 100%;
+    background-color: #050004;
+    padding: 0.5rem;
+    font-size: 1rem;
+    color: white;
+    font-family: 'Roboto Mono', monospace;
+   
+}
+
+#cancel-input-btn {
+    width: 8rem;
+    align-self: flex-end;
+    margin: 5px;
+    background-color: rgb(59, 144, 137);
+    border-radius: 3px;
+    /* border: 1px solid #18ab29; */
+    border-left:aqua;
+    border-top:aqua;
+    cursor: pointer;
+    color: #ffffff;
+    font-family: Arial;
+    font-size: 13px;
+    padding: 6px 24px;
+    text-decoration: none;
+    text-shadow: 0px 1px 0px #2f6627;
+}
+
+#cancel-input-btn:hover {
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0.05, #bc3315), color-stop(1, #d0451b));
+    background: -moz-linear-gradient(top, #bc3315 5%, #d0451b 100%);
+    background: -webkit-linear-gradient(top, #bc3315 5%, #d0451b 100%);
+    background: -o-linear-gradient(top, #bc3315 5%, #d0451b 100%);
+    background: -ms-linear-gradient(top, #bc3315 5%, #d0451b 100%);
+    background: linear-gradient(to bottom, #bc3315 5%, #d0451b 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#bc3315', endColorstr='#d0451b', GradientType=0);
+    background-color: #bc3315;
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Inconsolata:wght@200;300;400;500;600;700;800;900&display=swap');
+
+:root {
+    --editor-bg: #eee;
+    --editor-border: #3f87a6;
+}
+
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+html, body {
+    height: 100%;
+    width: 100%;
+}
+
+.editor {
+    height: 65vw;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.editor__wrapper {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    background: var(--editor-bg);
+    padding: 2em;
+    border-radius: 3px;
+    border: 1px solid #ccc;
+}
+
+.editor__body {
+    flex: 1;
+    height:60%;
+}
+
+.editor__footer {
+    display: flex;
+}
+
+.editor__footer--left {
+    /* display: flex;
+    flex-direction: column; */
+    position:absolute;
+    top:2.6vw;
+    right:2.1vw;
+    border-color:aqua;
+    display:flex;
+    gap:2.5vw;
+}
+
+.editor__footer--right {
+    flex: 1;
+    margin-left: 10px;
+    overflow: hidden;
+}
+
+.editor__btn {
+    border: 0;
+    padding: .5em;
+    background-color: rgb(59, 144, 137);
+    /* border: 2px solid #333; */
+    margin-top: 1em;
+    width: 5vw;
+    cursor: pointer;
+    color:white;
+
+    
+
+
+}
+.ace_content{
+    background-color:white;
+}
+
+.editor__console {
+    background-color: rgb(18, 17, 17);
+    width: 97%;
+    height: 15vw;
+    margin-top: .9em;
+    border: 1px solid var(--editor-border);
+    overflow: auto;
+    position:absolute;
+    top:33vw;
+    left:1.4vw;
+}
+
+.editor__code {
+    position: relative;
+    height: 45%;
+    width: 100%;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    border: 1px solid var(--editor-border);
+}
+
+
+.editor__console-logs {
+    padding: 10px;
+    list-style: none;
+}
+
+.editor__console-logs li pre {
+    font-size: .9em;
+    font-family: Inconsolata, sans-serif;
+}
+
+.ace_gutter {
+    border-left: 5px solid var(--editor-border);
+}
+
+.log--default {
+    color: #000;
+}
+
+.log--string {
+    color: #48BF0A;
+}
+
+.log--number {
+    color: #48BF0A;
+}
+
+.log--boolean {
+    color: blue;
+}
+
+.log--undefined {
+    color: grey;
+}
+
+.log--error {
+    color: red;
+}
+
+.log--object {
+    color: darkcyan;
+}
+
+.log--array {
+    color: darkblue;
+}
+
+.log--function {
+    color: yellow;
+}
+
+#js-btn{
+    height: 4.5vh;
+    top: 1vw;
+    position:absolute ;
+    top: 1.4vw;
+    left: 20vw;
+    width: 12vw;
+    position: absolute;
+    background-color: white;
+    border: 1px solid lightgrey;
+    border-radius: 5px;
+}
+#js-btn a{
+    text-decoration: none;
+    font-size: 1.5vw;
+    color: black;
+    font-family: auto;
+    
+}
+#dropdown{
+    box-shadow: 2px 0px 5px 2px rgba(59,144,137,0.5);
+    width:13em;
+    background-color: rgb(59,144,137);
+    color:white;
+    border-radius: 1vw;
+    cursor: pointer;
+    color: #ffffff;
+    font-family: Arial;
+    font-size: 13px;
+    text-decoration: none;
+    text-shadow: 0px 1px 0px #2f6627;
+    text-align: center;
+    box-sizing: border-box;
+    border:none;
+}
+
+#dropdown ul{
+    position:absolute;
+    top:0vw;
+    left:26vw;
+    z-index: 1;
+    width:8vw;
+}
+
+#dropdown:hover{
+    cursor: pointer;
+    background-color: white;
+    color: black;
+}
+
+#language-list{
+    display:none;
+    margin-top:1vw;
+    margin-left: 1vw;
+    background-color: rgb(59,144,137);
+    width:8vw;
+    padding:1vw;
+    border-radius: 0.5vw;
+}
+#language-list li{
+    list-style: none;
+    margin:0.5vw 0vw;
+}
+#language-list li a:hover{
+    color:black;
+}
+#language-list li a{
+    text-decoration: none;
+    color:white;
+}
+#lang-title{
+    font-size:1.5em;
+}
+#techis-logo{
+    width:3vw;
+}
+#navigate{
+    width:30vw;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
